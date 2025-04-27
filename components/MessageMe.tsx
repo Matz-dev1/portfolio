@@ -35,6 +35,12 @@ const MessageMe = () => {
   ) => {
     const { name, value } = e.target;
     setFormValues({ ...formValues, [name]: value });
+
+    // Resetujemy komunikat błędu dla zmienionego pola
+    setErrorMessage((prev) => ({
+      ...prev,
+      [name]: "",
+    }));
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
