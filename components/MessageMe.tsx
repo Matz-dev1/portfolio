@@ -1,6 +1,7 @@
 "use client";
+import emailjs from "@emailjs/browser";
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -15,6 +16,15 @@ const MessageMe = () => {
     email: "",
     message: "",
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<
+    "idle" | "success" | "error"
+  >("idle");
+
+  useEffect(() => {
+    emailjs.init("iKIAmfZbYMVYMVs6V");
+  }, []);
+
   type Message = {
     name: string;
     email: string;
@@ -29,12 +39,40 @@ const MessageMe = () => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus("idle");
+
     const errors = validate(formValues);
     setErrorMessage(errors);
-    if (Object.values(errors).every((error) => error === "")) {
-      console.log("Form submitted successfully!", formValues);
 
-      setFormValues({ name: "", email: "", message: "" });
+    if (Object.values(errors).every((error) => error === "")) {
+      emailjs
+        .send(
+          "service_8gwtval",
+          "template_shqk54x",
+          {
+            name: formValues.name,
+            email: formValues.email,
+            message: formValues.message,
+          },
+          "iKIAmfZbYMVYMVs6V"
+        )
+        .then(
+          (response) => {
+            console.log("SUCCESS!", response.status, response.text);
+            setFormValues({ name: "", email: "", message: "" });
+            setSubmitStatus("success");
+          },
+          (error) => {
+            console.log("FAILED...", error);
+            setSubmitStatus("error");
+          }
+        )
+        .finally(() => {
+          setIsSubmitting(false);
+        });
+    } else {
+      setIsSubmitting(false);
     }
   };
   const validate = (values: Message) => {
@@ -139,9 +177,24 @@ const MessageMe = () => {
               )}
             </div>
           </div>
-          <button className="p-3 hover:border-gray-700 border-2 border-[#d2e9b3] rounded-full w-auto font-bold text-start mr-auto cursor-pointer flex">
-            Send Message
+          <button
+            className={`p-3 hover:border-gray-700 border-2 border-[#d2e9b3] rounded-full w-auto font-bold text-start mr-auto cursor-pointer flex ${
+              isSubmitting ? "opacity-50 cursor-not-allowed" : ""
+            }`}
+            disabled={isSubmitting}
+          >
+            {isSubmitting ? "Wysyłanie..." : "Wyślij wiadomość"}
           </button>
+          {submitStatus === "success" && (
+            <p className="text-green-500 font-bold">
+              Wiadomość została wysłana pomyślnie!
+            </p>
+          )}
+          {submitStatus === "error" && (
+            <p className="text-red-500 font-bold">
+              Wystąpił błąd podczas wysyłania wiadomości. Spróbuj ponownie.
+            </p>
+          )}
         </form>
         <div className="border-2 border-gray-500"></div>
         <div className="flex flex-col gap-2 pt-4">
