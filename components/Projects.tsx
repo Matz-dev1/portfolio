@@ -14,9 +14,9 @@ const Projects = () => {
           <Image
             src={el.img}
             alt={`Project ${el.img}`}
-            width={500}
+            width={450}
             height={500}
-            className="object-fill bg-amber-50"
+            className="object-fill"
           />
           <div className="flex flex-col gap-4 my-auto">
             <h2 className="text-[20px] uppercase">{el.name}</h2>
