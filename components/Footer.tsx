@@ -4,7 +4,7 @@ import Link from "next/link";
 const Footer = () => {
   return (
     <footer className="w-full h-auto" id="Footer">
-      <ul className="flex flex-row justify-start py-6 gap-10 w-[100%]">
+      <ul className="flex flex-row justify-start py-12 gap-10 w-[100%]">
         <div className="flex flex-row justify-start px-4 gap-10 w-1/2">
           <li>Mateusz Zapolski</li>
           <li>mzapolski0@gmail.com</li>
@@ -13,7 +13,7 @@ const Footer = () => {
             <Link
               href="https://icons8.com"
               target="_blank"
-              className="hover:text-black"
+              className="hover:text-white"
             >
               Icons8
             </Link>
@@ -21,7 +21,7 @@ const Footer = () => {
         </div>
         <div className="ml-auto px-4">
           <li>
-            <Link href="#AboutMe" className="hover:text-black">
+            <Link href="#AboutMe" className="hover:text-white">
               Back to Top
             </Link>
           </li>

@@ -9,7 +9,7 @@ import Sidebar from "@/components/Sidebar";
 export default function Home() {
   return (
     <div className=" flex flex-row">
-      <div className="flex w-[17%] h-screen">
+      <div className="flex w-[17%] h-screen text-[#d2e9b3]">
         <Sidebar />
       </div>
       <div className="relative h-screen overflow-y-scroll no-scrollbar w-[83%] scroll-smooth">

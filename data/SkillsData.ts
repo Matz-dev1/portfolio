@@ -51,9 +51,6 @@ export const skills: Skill[] = [
     text: "Zod",
     link: "/icons/zodIcon.svg",
   },
-];
-
-export const skillsToLearn: Skill[] = [
   {
     text: "Zustand",
     link: "/icons/zustandIcon.svg",

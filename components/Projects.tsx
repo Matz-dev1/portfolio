@@ -5,15 +5,18 @@ import Link from "next/link.js";
 
 const Projects = () => {
   return (
-    <div className="flex flex-col gap-2 h-auto max-h-screen" id="Projects">
+    <div className="flex flex-col h-auto max-h-screen" id="Projects">
       {projectData.map((el) => (
-        <div className="flex flex-row w-full gap-6 bg-gray-700" key={el.id}>
+        <div
+          className={`flex flex-row w-full gap-6 h-[33.4vh]  ${el.class}`}
+          key={el.id}
+        >
           <Image
             src={el.img}
-            alt="sss"
-            width={300}
-            height={300}
-            className="object-contain bg-amber-50 max-h-[300px]"
+            alt={`Project ${el.img}`}
+            width={500}
+            height={500}
+            className="object-fill bg-amber-50"
           />
           <div className="flex flex-col gap-4 my-auto">
             <h2 className="text-[20px] uppercase">{el.name}</h2>

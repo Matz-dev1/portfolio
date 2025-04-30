@@ -4,22 +4,25 @@ export type Project = {
   img: string;
   name: string;
   text: string;
+  class: string;
 };
 
 export const projectData: Project[] = [
   {
     id: "space-tourism",
     link: "https://github.com/Matz-dev1/space-tourism",
-    img: "/images/space-tourism.png",
+    img: "/images/SpaceTourism.png",
     name: "Space Tourism",
     text: "Desktop/mobile page with basic logic",
+    class: "bg-gray-700/90",
   },
   {
     id: "find-a-car-page",
     link: "https://github.com/Matz-dev1/find-a-car-page",
-    img: "/images/PickACar.png",
+    img: "/images/FindACar.png",
     name: "Find a Car Page",
     text: "Web app for finding and displaying data about the car. Not finished.",
+    class: "bg-gray-700/80",
   },
   {
     id: "signup-form",
@@ -27,5 +30,6 @@ export const projectData: Project[] = [
     img: "/images/SignUpForm.png",
     name: "Sign Up Form",
     text: "Basic sign up form with logic built locally using hooks.",
+    class: "bg-gray-700/70",
   },
 ];

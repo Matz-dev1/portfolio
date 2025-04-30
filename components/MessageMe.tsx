@@ -36,7 +36,6 @@ const MessageMe = () => {
     const { name, value } = e.target;
     setFormValues({ ...formValues, [name]: value });
 
-    // Resetujemy komunikat błędu dla zmienionego pola
     setErrorMessage((prev) => ({
       ...prev,
       [name]: "",
@@ -104,8 +103,8 @@ const MessageMe = () => {
   };
 
   return (
-    <div className="h-screen flex flex-col bg-gray-800" id="MessageMe">
-      <div className="flex flex-col align-bottom py-auto mt-40 gap-4">
+    <div className="h-screen flex flex-col bg-[#5f0f53]" id="ContactMe">
+      <div className="flex flex-col align-bottom py-auto mt-40 gap-4 px-4">
         <h2 className="font-bold text-2xl">Get in touch</h2>
         <p className="opacity-90">Have a question or want to work together?</p>
       </div>
@@ -127,13 +126,13 @@ const MessageMe = () => {
                   id="name"
                   placeholder="e.g. Stephen King"
                   className={`border-2 border-gray-300 focus:border-gray-500 focus:outline-none w-full h-10 pl-2 rounded-sm ${
-                    errorMessage.name ? "border-red-900" : ""
+                    errorMessage.name ? "border-red-500" : ""
                   }`}
                   onChange={handleChange}
                   value={formValues.name}
                 />
                 {errorMessage.name && (
-                  <span className="text-red-900 font-bold">
+                  <span className="text-gray-300 font-bold">
                     {errorMessage.name}
                   </span>
                 )}
@@ -148,13 +147,13 @@ const MessageMe = () => {
                   id="email"
                   placeholder="e.g. text@gmail.com"
                   className={`border-2 border-gray-300 focus:border-gray-500 focus:outline-none w-full h-10 pl-2 rounded-sm ${
-                    errorMessage.email ? "border-red-900" : ""
+                    errorMessage.email ? "border-red-500" : ""
                   }`}
                   onChange={handleChange}
                   value={formValues.email}
                 />
                 {errorMessage.email && (
-                  <span className="text-red-900 font-bold">
+                  <span className="text-gray-300 font-bold">
                     {errorMessage.email}
                   </span>
                 )}
@@ -171,20 +170,20 @@ const MessageMe = () => {
                 rows={5}
                 cols={10}
                 className={`border-2 border-gray-300 focus:border-gray-500 focus:outline-none pl-2 w-full rounded-sm ${
-                  errorMessage.message ? "border-red-900" : ""
+                  errorMessage.message ? "border-red-500" : ""
                 }`}
                 onChange={handleChange}
                 value={formValues.message}
               ></textarea>
               {errorMessage.message && (
-                <span className="text-red-900 font-bold">
+                <span className="text-gray-300 font-bold">
                   {errorMessage.message}
                 </span>
               )}
             </div>
           </div>
           <button
-            className={`p-3 hover:border-gray-700 border-2 border-[#d2e9b3] rounded-full w-auto font-bold text-start mr-auto cursor-pointer flex ${
+            className={`p-3 hover:border-black/50 hover:text-black/50 border-2 border-[#d2e9b3] rounded-full w-auto font-bold text-start mr-auto cursor-pointer flex ${
               isSubmitting ? "opacity-50 cursor-not-allowed" : ""
             }`}
             disabled={isSubmitting}
@@ -202,7 +201,7 @@ const MessageMe = () => {
             </p>
           )}
         </form>
-        <div className="border-2 border-gray-500"></div>
+        <div className="border-2 border-gray-300"></div>
         <div className="flex flex-col gap-2 pt-4">
           <p className="font-bold">Socials</p>
           <Link href="/">

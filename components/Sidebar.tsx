@@ -20,8 +20,8 @@ const Sidebar = () => {
       id: 3,
     },
     {
-      href: "#MessageMe",
-      text: "Message Me",
+      href: "#ContactMe",
+      text: "Contact Me",
       id: 4,
     },
   ];
@@ -32,20 +32,21 @@ const Sidebar = () => {
           <li>
             <a href="https://github.com/Matz-dev1" target="_blank" className="">
               <Image
-                src="/icons/githubIcon.png"
+                src="/icons/githubIconwhite.svg"
                 width={40}
                 height={40}
                 alt="GitHub icon by Icons8"
+                className="hover:scale-150"
               />
             </a>
           </li>
         </div>
         <div className=" flex flex-col justify-between my-auto gap-6 uppercase font-bold opacity-70">
           {links.map((link) => (
-            <li key={link.id}>
+            <li key={link.id} className="mx-0">
               <Link
                 href={link.href}
-                className="inline-block opacity-60 hover:opacity-100 hover:text-black hover:text-shadow-amber-200 hover:text-shadow-[0_5px_20px_rgba(255,193,7,0.7)]"
+                className="flex justify-end opacity-60 hover:opacity-100 hover:text-white hover:text-shadow-amber-200 hover:text-shadow-[0_5px_20px_rgba(255,193,7,0.7)]"
               >
                 {link.text}
               </Link>
